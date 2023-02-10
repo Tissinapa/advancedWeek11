@@ -1,11 +1,17 @@
 import MyList from "./MyList"
 
-function MyContainer() {
+
+
+const MyContainer = () => {
   return (
-    <div>MyContainer
-        <MyList/>
+    <div>
+      <MyList
+        header = {"Nice, list of components"}
+        items={[
+          {id:"1", text: "This is an item"},
+          {id:"2", text: "Return of item"}
+        ]}/>
     </div>
-    
   )
 }
 
