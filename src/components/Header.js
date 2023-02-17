@@ -3,29 +3,47 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import{Link} from "react-router-dom"
+import{Link} from "react-router-dom";
 
-//<Button color="inherit">Login</Button>
+import { useTranslation } from 'react-i18next';
+import { Suspense } from 'react';
 
 
-export default function Header() {
+
+function Header() {
+  const {t, i18n} = useTranslation()
+  const changeLanguage = (lang)=>{
+    i18n.changeLanguage(lang)
+  }
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Link to="/">
-            <Button variant="contaned" color="white">Home</Button>
+            <Button variant="contaned" color="white">{t("Home")}</Button>
           </Link>
           <Link to="/about">
-            <Button variant="contaned" color="white">About</Button>
+            <Button variant="contaned" color="white">{t("About")}</Button>
           </Link>
+          <Button variant="contained" id="fi" onClick={()=> changeLanguage("fi")}>FI</Button>
+          <Button variant="contained" id="en" onClick={()=> changeLanguage("en")}>EN</Button>
         </Toolbar>
       </AppBar>
+      <h1>{t("This is front page.")}</h1>
+      
     </Box>
+
   );
 }
 
-
+export default function App() {
+  return (
+    <Suspense fallback="loading">
+      <Header />
+    </Suspense>
+  );
+}
 
 
 
