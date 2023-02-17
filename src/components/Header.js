@@ -30,7 +30,7 @@ function Header() {
           <Button variant="contained" id="en" onClick={()=> changeLanguage("en")}>EN</Button>
         </Toolbar>
       </AppBar>
-      <p>{t("This is front page")}</p>
+      <p>{t("This is the front page")}</p>
       
     </Box>
 
